@@ -4,7 +4,7 @@ from typing import Optional
 
 class ExaminationType(enum.StrEnum):
     KNEE = enum.auto()
-    HEAP = enum.auto()
+    HIP = enum.auto()
     LEG = enum.auto()
     HEAD = enum.auto()
 
@@ -21,8 +21,8 @@ def map_to_examination_type(value: str) -> Optional[ExaminationType]:
     match (value.strip().lower()):
         case "knee":
             return ExaminationType.KNEE
-        case "heap":
-            return ExaminationType.HEAP
+        case "hip":
+            return ExaminationType.HIP
         case "leg":
             return ExaminationType.LEG
         case "head":
