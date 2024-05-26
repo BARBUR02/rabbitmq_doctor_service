@@ -18,7 +18,10 @@ class Technician(Actor):
         self.sending_connection.close()
 
     def run(self) -> None:
-        self._listen_for_results()
+        try:
+            self._listen_for_results()
+        except Exception:
+            return
 
     def _initialize_queues(self) -> None:
         self.id = "technician_" + self.id
@@ -78,4 +81,6 @@ class Technician(Actor):
         try:
             self.listening_channel.start_consuming()
         except Exception as e:
+            return
+        except KeyboardInterrupt as e:
             return
